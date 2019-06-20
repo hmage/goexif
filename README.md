@@ -3,23 +3,9 @@ goexif
 
 [![GoDoc](https://godoc.org/github.com/hmage/goexif?status.svg)](https://godoc.org/github.com/hmage/goexif)
 
-Provides decoding of basic exif and tiff encoded data. Still in alpha - no guarantees.
-Suggestions and pull requests are welcome.  Functionality is split into two packages - "exif" and "tiff"
-The exif package depends on the tiff package. 
+A fork of rwcarlsen/goexif that fixes bugs found via fuzzing to prevent infinite loops or OOMs when invalid or badly formed exif input is fed into it.
 
-Like goexif? - Bitcoin Cash tips welcome: 1DrU5V37nTXuv4vnRLVpahJEjhdATNgoBh
-
-To install, in a terminal type:
-
-```
-go get github.com/hmage/goexif/exif
-```
-
-Or if you just want the tiff package:
-
-```
-go get github.com/hmage/goexif/tiff
-```
+Suggestions and pull requests are welcome.
 
 Example usage:
 
@@ -36,16 +22,16 @@ import (
 )
 
 func ExampleDecode() {
+	// Optionally register camera makenote data parsing - currently Nikon and
+	// Canon are supported.
+	exif.RegisterParsers(mknote.All...)
+
 	fname := "sample1.jpg"
 
 	f, err := os.Open(fname)
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	// Optionally register camera makenote data parsing - currently Nikon and
-	// Canon are supported.
-	exif.RegisterParsers(mknote.All...)
 
 	x, err := exif.Decode(f)
 	if err != nil {
@@ -69,4 +55,3 @@ func ExampleDecode() {
 ```
 
 <!--golang-->
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/5e166f74cdb82b999ccd84e3c4dc4348 "githalytics.com")](http://githalytics.com/hmage/goexif)
