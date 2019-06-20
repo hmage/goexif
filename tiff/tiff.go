@@ -68,8 +68,11 @@ func Decode(r io.Reader) (*Tiff, error) {
 
 	// load IFD's
 	var d *Dir
-	prev := offset
+	seen := map[int32]bool{}
 	for offset != 0 {
+		if seen[offset] {
+			return nil, errors.New("tiff: recursive IFD")
+		}
 		// seek to offset
 		_, err := buf.Seek(int64(offset), 0)
 		if err != nil {
@@ -80,16 +83,13 @@ func Decode(r io.Reader) (*Tiff, error) {
 			return nil, errors.New("tiff: seek offset after EOF")
 		}
 
+		seen[offset] = true
+
 		// load the dir
 		d, offset, err = DecodeDir(buf, t.Order)
 		if err != nil {
 			return nil, err
 		}
-
-		if offset == prev {
-			return nil, errors.New("tiff: recursive IFD")
-		}
-		prev = offset
 
 		t.Dirs = append(t.Dirs, d)
 	}
