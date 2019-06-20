@@ -191,67 +191,60 @@ func (t *Tag) convertVals() error {
 		}
 	case DTByte:
 		var v uint8
-		t.intVals = make([]int64, int(t.Count))
-		for i := range t.intVals {
+		for i := uint32(0); i < t.Count; i++ {
 			err := binary.Read(r, t.order, &v)
 			if err != nil {
 				return err
 			}
-			t.intVals[i] = int64(v)
+			t.intVals = append(t.intVals, int64(v))
 		}
 	case DTShort:
 		var v uint16
-		t.intVals = make([]int64, int(t.Count))
-		for i := range t.intVals {
+		for i := uint32(0); i < t.Count; i++ {
 			err := binary.Read(r, t.order, &v)
 			if err != nil {
 				return err
 			}
-			t.intVals[i] = int64(v)
+			t.intVals = append(t.intVals, int64(v))
 		}
 	case DTLong:
 		var v uint32
-		t.intVals = make([]int64, int(t.Count))
-		for i := range t.intVals {
+		for i := uint32(0); i < t.Count; i++ {
 			err := binary.Read(r, t.order, &v)
 			if err != nil {
 				return err
 			}
-			t.intVals[i] = int64(v)
+			t.intVals = append(t.intVals, int64(v))
 		}
 	case DTSByte:
 		var v int8
-		t.intVals = make([]int64, int(t.Count))
-		for i := range t.intVals {
+		for i := uint32(0); i < t.Count; i++ {
 			err := binary.Read(r, t.order, &v)
 			if err != nil {
 				return err
 			}
-			t.intVals[i] = int64(v)
+			t.intVals = append(t.intVals, int64(v))
 		}
 	case DTSShort:
 		var v int16
-		t.intVals = make([]int64, int(t.Count))
-		for i := range t.intVals {
+		for i := uint32(0); i < t.Count; i++ {
 			err := binary.Read(r, t.order, &v)
 			if err != nil {
 				return err
 			}
-			t.intVals[i] = int64(v)
+			t.intVals = append(t.intVals, int64(v))
 		}
 	case DTSLong:
 		var v int32
-		t.intVals = make([]int64, int(t.Count))
-		for i := range t.intVals {
+		for i := uint32(0); i < t.Count; i++ {
 			err := binary.Read(r, t.order, &v)
 			if err != nil {
 				return err
 			}
-			t.intVals[i] = int64(v)
+			t.intVals = append(t.intVals, int64(v))
 		}
 	case DTRational:
-		t.ratVals = make([][]int64, int(t.Count))
-		for i := range t.ratVals {
+		for i := uint32(0); i < t.Count; i++ {
 			var n, d uint32
 			err := binary.Read(r, t.order, &n)
 			if err != nil {
@@ -261,11 +254,10 @@ func (t *Tag) convertVals() error {
 			if err != nil {
 				return err
 			}
-			t.ratVals[i] = []int64{int64(n), int64(d)}
+			t.ratVals = append(t.ratVals, []int64{int64(n), int64(d)})
 		}
 	case DTSRational:
-		t.ratVals = make([][]int64, int(t.Count))
-		for i := range t.ratVals {
+		for i := uint32(0); i < t.Count; i++ {
 			var n, d int32
 			err := binary.Read(r, t.order, &n)
 			if err != nil {
@@ -275,27 +267,25 @@ func (t *Tag) convertVals() error {
 			if err != nil {
 				return err
 			}
-			t.ratVals[i] = []int64{int64(n), int64(d)}
+			t.ratVals = append(t.ratVals, []int64{int64(n), int64(d)})
 		}
 	case DTFloat: // float32
-		t.floatVals = make([]float64, int(t.Count))
-		for i := range t.floatVals {
+		for i := uint32(0); i < t.Count; i++ {
 			var v float32
 			err := binary.Read(r, t.order, &v)
 			if err != nil {
 				return err
 			}
-			t.floatVals[i] = float64(v)
+			t.floatVals = append(t.floatVals, float64(v))
 		}
 	case DTDouble:
-		t.floatVals = make([]float64, int(t.Count))
-		for i := range t.floatVals {
+		for i := uint32(0); i < t.Count; i++ {
 			var u float64
 			err := binary.Read(r, t.order, &u)
 			if err != nil {
 				return err
 			}
-			t.floatVals[i] = u
+			t.floatVals = append(t.floatVals, u)
 		}
 	}
 
