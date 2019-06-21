@@ -90,6 +90,10 @@ const (
 	BodySerialNumber           FieldName = "BodySerialNumber"
 	LensMake                   FieldName = "LensMake"
 	LensModel                  FieldName = "LensModel"
+
+	// Fields for embedded images
+	PreviewImageStart  = "PreviewImageStart"
+	PreviewImageLength = "PreviewImageLength"
 )
 
 // Windows-specific tags
@@ -158,8 +162,10 @@ var exifFields = map[uint16]FieldName{
 	0x0102: BitsPerSample,
 	0x0103: Compression,
 	0x0106: PhotometricInterpretation,
+	0x0111: PreviewImageStart,
 	0x0112: Orientation,
 	0x0115: SamplesPerPixel,
+	0x0117: PreviewImageLength,
 	0x011C: PlanarConfiguration,
 	0x0212: YCbCrSubSampling,
 	0x0213: YCbCrPositioning,
