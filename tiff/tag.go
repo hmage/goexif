@@ -140,7 +140,8 @@ func DecodeTag(r ReadAtReader, order binary.ByteOrder) (*Tag, error) {
 
 	// There seems to be a relatively common corrupt tag which has a Count of
 	// MaxUint32. This is probably not a valid value, so return early.
-	if t.Count == 1<<32-1 {
+	// Also check for invalid count values.
+	if t.Count == 1<<32-1 || t.Count >= 1<<31-1 {
 		return t, errors.New("invalid Count offset in tag")
 	}
 
@@ -358,6 +359,9 @@ func (t *Tag) Rat2(i int) (num, den int64, err error) {
 func (t *Tag) Int64(i int) (int64, error) {
 	if t.format != IntVal {
 		return 0, t.typeErr(IntVal)
+	}
+	if i >= len(t.intVals) {
+		return 0, errors.New("index out of range in intVals")
 	}
 	return t.intVals[i], nil
 }
