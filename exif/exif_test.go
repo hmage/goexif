@@ -263,3 +263,20 @@ func TestZeroLengthTagError(t *testing.T) {
 		t.Fatal("wrong error:", err.Error())
 	}
 }
+
+func TestInvalidIFDOffset(t *testing.T) {
+	name := filepath.Join(*dataDir, "corrupt/invalid_ifd_offset.jpg")
+	f, err := os.Open(name)
+	if err != nil {
+		t.Fatalf("%v\n", err)
+	}
+	defer f.Close()
+
+	_, err = Decode(f)
+	if err == nil {
+		t.Fatal("no error on bad exif data")
+	}
+	if !strings.Contains(err.Error(), "seek offset after EOF") {
+		t.Fatal("wrong error:", err.Error())
+	}
+}
