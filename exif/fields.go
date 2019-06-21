@@ -87,6 +87,7 @@ const (
 	Sharpness                  FieldName = "Sharpness"
 	DeviceSettingDescription   FieldName = "DeviceSettingDescription"
 	SubjectDistanceRange       FieldName = "SubjectDistanceRange"
+	BodySerialNumber           FieldName = "BodySerialNumber"
 	LensMake                   FieldName = "LensMake"
 	LensModel                  FieldName = "LensModel"
 )
@@ -255,6 +256,7 @@ var exifFields = map[uint16]FieldName{
 	0xA40A: Sharpness,
 	0xA40B: DeviceSettingDescription,
 	0xA40C: SubjectDistanceRange,
+	0xA431: BodySerialNumber,
 	0xA433: LensMake,
 	0xA434: LensModel,
 }

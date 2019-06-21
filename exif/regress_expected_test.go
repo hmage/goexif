@@ -1879,6 +1879,7 @@ var regressExpected = map[string]map[FieldName]string{
 	"2012-12-21-11-15-19-sep-IMG_0001.jpg": map[FieldName]string{
 		ApertureValue:                    `"286720/65536"`,
 		Artist:                           `""`,
+		BodySerialNumber:                 `"082033000088"`,
 		ColorSpace:                       `1`,
 		ComponentsConfiguration:          `""`,
 		Copyright:                        `""`,
