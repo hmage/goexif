@@ -1,7 +1,7 @@
 goexif
 ======
 
-[![GoDoc](https://godoc.org/github.com/hmage/goexif?status.svg)](https://godoc.org/github.com/hmage/goexif) [![CI](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/badge/hmage/goexif)]
+[![GoDoc](https://godoc.org/github.com/hmage/goexif?status.svg)](https://godoc.org/github.com/hmage/goexif) ![CI](https://action-badges.now.sh/hmage/goexif)
 
 A fork of rwcarlsen/goexif that fixes bugs found via fuzzing to prevent infinite loops or OOMs when invalid or badly formed exif input is fed into it.
 
