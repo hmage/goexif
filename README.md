@@ -3,7 +3,7 @@ EXIF container parser in pure Go
 
 [![GoDoc](https://godoc.org/github.com/hmage/goexif?status.svg)](https://godoc.org/github.com/hmage/goexif) ![CI](https://action-badges.now.sh/hmage/goexif)
 
-A fork of rwcarlsen/goexif that fixes bugs found via fuzzing to prevent infinite loops or OOMs when invalid or badly formed exif input is fed into it.
+A fork of [rwcarlsen/goexif](https://github.com/rwcarlsen/goexif) that fixes bugs found via fuzzing to prevent infinite loops or OOMs when invalid or badly formed exif input is fed into it.
 
 Suggestions and pull requests are welcome.
 
