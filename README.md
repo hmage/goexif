@@ -1,4 +1,4 @@
-goexif
+EXIF container parser in pure Go
 ======
 
 [![GoDoc](https://godoc.org/github.com/hmage/goexif?status.svg)](https://godoc.org/github.com/hmage/goexif) ![CI](https://action-badges.now.sh/hmage/goexif)
