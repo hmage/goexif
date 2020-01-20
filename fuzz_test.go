@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/hmage/goexif/exif"
-	"github.com/hmage/goexif/mknote"
+	"github.com/ZorinArsenij/goexif/exif"
+	"github.com/ZorinArsenij/goexif/mknote"
 )
 
 func TestFuzzCrash1(t *testing.T) {

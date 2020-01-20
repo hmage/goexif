@@ -16,7 +16,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hmage/goexif/tiff"
+	"github.com/ZorinArsenij/goexif/tiff"
 )
 
 const (
@@ -26,6 +26,10 @@ const (
 	gpsPointer     = 0x8825
 	interopPointer = 0xA005
 )
+
+var ignoredTags = map[FieldName]bool{
+	UserComment: true,
+}
 
 // A decodeError is returned when the image cannot be decoded as a tiff image.
 type decodeError struct {
@@ -322,6 +326,10 @@ func Decode(r io.Reader) (*Exif, error) {
 func (x *Exif) LoadTags(d *tiff.Dir, fieldMap map[uint16]FieldName, showMissing bool) {
 	for _, tag := range d.Tags {
 		name := fieldMap[tag.Id]
+		if ignoredTags[name] {
+			continue
+		}
+
 		if name == "" {
 			if !showMissing {
 				continue

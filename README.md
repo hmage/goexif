@@ -1,7 +1,7 @@
 EXIF container parser in pure Go
 ======
 
-[![GoDoc](https://godoc.org/github.com/hmage/goexif?status.svg)](https://godoc.org/github.com/hmage/goexif) ![CI](https://action-badges.now.sh/hmage/goexif)
+[![GoDoc](https://godoc.org/github.com/ZorinArsenij/goexif?status.svg)](https://godoc.org/github.com/ZorinArsenij/goexif) ![CI](https://action-badges.now.sh/ZorinArsenij/goexif)
 
 A fork of [rwcarlsen/goexif](https://github.com/rwcarlsen/goexif) that fixes bugs found via fuzzing to prevent infinite loops or OOMs when invalid or badly formed exif input is fed into it.
 
@@ -17,8 +17,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/hmage/goexif/exif"
-	"github.com/hmage/goexif/mknote"
+	"github.com/ZorinArsenij/goexif/exif"
+	"github.com/ZorinArsenij/goexif/mknote"
 )
 
 func ExampleDecode() {
